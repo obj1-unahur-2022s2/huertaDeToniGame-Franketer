@@ -11,7 +11,7 @@ program huertaDeToni {
 	game.ground("tierra.png")
 	
 	// Agregamos al amigo Toni.
-	game.addVisual(toni)
+	game.addVisualCharacter(toni)
 	
 	/*
 	 * Acá usamos addVisualIn en vez de addVisual, y por esto 
@@ -29,7 +29,18 @@ program huertaDeToni {
 	 * De yapa, mostramos cómo agregar varios objetos de una utilizando
 	 * un rango (1..13), que equivale a la lista [1, 2, 3, ..., 13].
 	 */
-	(1..13).forEach { x => game.addVisualIn(new Maiz(), game.at(x, 5)) }
+	// (1..13).forEach { x => game.addVisualIn(new Maiz(), game.at(x, 5)) }
 		
+	
+	keyboard.m().onPressDo{toni.sembrarMaiz()}
+	keyboard.t().onPressDo{toni.sembrarTrigo()}
+	keyboard.o().onPressDo{toni.sembrarTomaco()}
+	keyboard.a().onPressDo{toni.regarTablero()}
+	keyboard.r().onPressDo{toni.riega()}
+	keyboard.x().onPressDo{toni.cosechaPlantasListas()}
+	keyboard.c().onPressDo{toni.cosechaActual()}
+	keyboard.v().onPressDo{toni.vendeTodaLaCosecha()}
+	keyboard.space().onPressDo{toni.estado()}
+	
 	game.start()
 }
